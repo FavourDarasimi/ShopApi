@@ -34,6 +34,16 @@ class CreateUser(generics.ListCreateAPIView):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
 
+class UpdatePersonView(generics.ListCreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+
+    def post(self, request,pk , *args, **kwargs):
+        serializer = PersonSerializer(Person.objects.get(pk=pk), data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class AddressView(generics.ListCreateAPIView):
     queryset = Address.objects.all()
