@@ -2,7 +2,8 @@ from django.urls import path
 
 from store.views import CategoryView, UpdateCategoryView, ProductView, UpdateProductView, CartView, UpdateCartView, \
     CartItemView, UpdateCartItemView, TransactionView, UpdateTransactionView, OrderView, UpdateOrderView, \
-    DetailCategoryView, DetailProductView, DetailCartView, DetailCartItemView, DetailTransactionView, DetailOrderView
+    DetailCategoryView, DetailProductView, DetailCartView, DetailCartItemView, DetailTransactionView, DetailOrderView, \
+    DeleteCartItemView,DeleteOrderView
 
 
 urlpatterns = [
@@ -26,16 +27,18 @@ urlpatterns = [
     path('cartItem/create',CartItemView.as_view()),
     path('cartItem/<int:pk>',DetailCartItemView.as_view()),
     path('cartItem/update/<int:pk>',UpdateCartItemView.as_view()),
+    path('cartItem/delete/<int:pk>',DeleteCartItemView.as_view()),
 
     path('transactions',TransactionView.as_view()),
-    path('tansaction/create',TransactionView.as_view()),
+    path('transaction/create',TransactionView.as_view()),
     path('transaction/<int:pk>',DetailTransactionView.as_view()),
-    path('transction/update/<int:pk>',UpdateTransactionView.as_view()),
+    path('transaction/update/<int:pk>',UpdateTransactionView.as_view()),
 
     path('orders',OrderView.as_view()),
     path('order/create',OrderView.as_view()),
     path('order/<int:pk>',DetailOrderView.as_view()),
     path('order/update/<int:pk>',UpdateOrderView.as_view()),
+    path('order/delete/<int:pk>',DeleteOrderView.as_view()),
 
 
 ]
